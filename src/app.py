@@ -19,7 +19,7 @@ class Category:
     def get_balance(self) -> float:
         return sum(map(lambda tx: tx['amount'], self.ledger))
     
-    def transfer(self, amount: float, destination_category: Category) -> bool:
+    def transfer(self, amount: float, destination_category: 'Category') -> bool:
         if self.check_funds(amount):
             destination_category.deposit(amount, description=f"Transfer from {self.category_name}")
             self.withdraw(amount, description=f"Transfer to {destination_category.category_name}")
